@@ -1,0 +1,5 @@
+Fixed MACs per switch throughput
+Threads: 1
+switches: 1, MACs: 100000, threads 1  cbench run # 1
+-------------------------------------------------------------
+switches: 1, MACs: 100000, threads 1  cbench run # 2
