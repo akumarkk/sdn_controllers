@@ -86,6 +86,8 @@ test_controller()
 		echo "Threads: $THR_NUM" >> $stats;
 		# Cbench run loop
 		for j in $(seq 0 1 $RUN) ; do
+			echo ""
+			echo "______________ Starting test ____________"
 			echo "switches: $3, MACs: $2, THR_NUM $THR_NUM  cbench run # $((j+1))" >> $stats;
 			echo "switches: $3, MACs: $2, THR_NUM $THR_NUM  cbench run # $((j+1))"; 
 			 ./start.sh $THR_NUM > /dev/null 2>>debug_log &
@@ -132,13 +134,12 @@ sed -i -e "s/controller.immediate=.*$/controller.immediate=false/" beacon-1.0.2/
 echo "Fixed MACs per switch throughput" >> $log;
 echo "Fixed MACs per switch throughput" >> $stats;
 for i in $(seq 0 1 $CONTR_NUM) ; do
-	./$HOMEDIR/${CONTR_DIR[i]}/who.sh;
-	./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $log;
-	./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $stats;
+	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh;
+	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $log;
+	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $stats;
 	for NUMSWITCH in $SWITCHES ; do
 		echo "switches: $NUMSWITCH" >> $log;
-		echo "**********   Starting test  ***************"
-		echo "switches: $NUMSWITCH" 
+		echo "**********   Starting test (Switches=$NUMSWITCH)  ***************"
 		test_controller $i $FIX_MAC $NUMSWITCH "-t" $THR_NUM;
 	done
 done
