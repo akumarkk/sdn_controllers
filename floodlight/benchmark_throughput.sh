@@ -28,7 +28,7 @@ fi;
 cbench_server="127.0.0.1"; #ip of control network interface where cbench is run
 contr_server="localhost"; #ip of control network interface to connect to controller
 HOMEDIR="."
-THR_NUM=1
+THR_NUM=8
 LOOP=10
 DUR=10000
 SWITCHES='1 4 16 32 64 256'
@@ -76,19 +76,19 @@ RUN=$((RUN-1))
 ml="07_Mul"
 mlp="07_Mul-perf"
 
-#params: controller id ($i), macs per swich, num of switches, mode (-t for thoroughput, '' for latency), number of threads
+#params: controller id ($i), macs per swich, num of switches, mode (-t for thoroughput, '' for latency), number of THR_NUM
 test_controller()
 {
 	# Threads num loop
-	for threads in $(seq 1 $THR_NUM) ; do
-		echo "Threads: $threads" >> $log;
-		echo "Threads: $threads" 
-		echo "Threads: $threads" >> $stats;
+	#for THR_NUM in $(seq 1 $THR_NUM) ; do
+		echo "Threads: $THR_NUM" >> $log;
+		echo "Threads: $THR_NUM" 
+		echo "Threads: $THR_NUM" >> $stats;
 		# Cbench run loop
 		for j in $(seq 0 1 $RUN) ; do
-			echo "switches: $3, MACs: $2, threads $threads  cbench run # $((j+1))" >> $stats;
-			echo "switches: $3, MACs: $2, threads $threads  cbench run # $((j+1))"; 
-			 #./$HOMEDIR/${CONTR_DIR[$1]}/start.sh $threads > /dev/null 2>>debug_log &
+			echo "switches: $3, MACs: $2, THR_NUM $THR_NUM  cbench run # $((j+1))" >> $stats;
+			echo "switches: $3, MACs: $2, THR_NUM $THR_NUM  cbench run # $((j+1))"; 
+			 ./start.sh $THR_NUM > /dev/null 2>>debug_log &
 			gpid=`ps axu | grep start.sh | egrep -vi grep | awk '{print $2}'`;
 			echo "Sleeping .................."
 			sleep 5;
@@ -120,7 +120,7 @@ test_controller()
 			echo "-------------------------------------------------------------" >> $stats;
 		done
 		echo "-------------------------------------------------------------" >> $log;
-	done
+	#done
 }
 
 ./stat.sh $stats &
