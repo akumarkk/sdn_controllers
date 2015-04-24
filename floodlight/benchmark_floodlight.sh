@@ -1,8 +1,11 @@
 ./install.sh
+
+cp start.sh ./floodlight/;
+cp ./benchmark_throughput.sh ./floodlight/
+
 cd ./floodlight
 pwd1=`pwd`
 echo "Entered [$pwd1/floodlight]"
 
-cp start.sh ./floodlight/;
-./benchmark_throughput.sh
+./benchmark_throughput.sh .
 
