@@ -1,0 +1,8 @@
+#set xrange [0:]
+set output "macs.png"
+set ylabel "Flows/sec"
+set xlabel  "MACS per Switch"
+set grid
+set xtics("1000" 0, "10000" 1, "100000" 2, "1000000" 3, "10000000" 4)
+plot "data.txt" using :2 title "foo" with linespoints
+
