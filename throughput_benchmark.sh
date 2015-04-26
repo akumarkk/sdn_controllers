@@ -1,18 +1,18 @@
 echo "Benchmarking floodlight ...."
 
-#mkdir Results
-#cd ./Floodlight
-#pwd1=`pwd`
-#echo "Entered directory [$pwd1]."
-#./benchmark_floodlight.sh
+mkdir Results
+cd ./Floodlight
+pwd1=`pwd`
+echo "Entered directory [$pwd1]."
+./benchmark_floodlight.sh
 
 
-#echo "Benchmarking Floodlight finished"
-#echo "Collecting required log files..."
+echo "Benchmarking Floodlight finished"
+echo "Collecting required log files..."
 
-#cp ./tmp/floodlight/floodlight.log ../Results/
-#cd ..
-#echo "-------------------------------------------------------------"
+cp ./tmp/floodlight/floodlight.log ../Results/
+cd ..
+echo "-------------------------------------------------------------"
 
 #By this point, we are expected to be in sdn_controllers
 pwd1=`pwd`
