@@ -98,7 +98,7 @@ test_controller()
 			echo $cdir;
 			echo "GPid is $gpid, id is $1";
 			echo "Starting cbench server ...."
-			ssh $cbench_server "until cbench -p 6653 -c $contr_server -m $DUR -l $LOOP -M $2 $4 -s $3; do echo "cbench failed!!!"; echo "Re-trying in 5 seconds"; sleep 5; done;" >> $log;
+			ssh $cbench_server "until cbench -p 6633 -c $contr_server -m $DUR -l $LOOP -M $2 $4 -s $3; do echo "cbench failed!!!"; echo "Re-trying in 5 seconds"; sleep 5; done;" >> $log;
 			echo "__________ cbench ret status = $? ___________"
 			
 			# Kill start.sh and all child procs
@@ -111,12 +111,11 @@ test_controller()
 			then
                         	sudo killall lt-mul
                 	fi;
-			listen=`netstat -na | grep 6653 | grep LISTEN`;
+			listen=`netstat -na | grep 6633 | grep LISTEN`;
 			while [ "$listen" != '' ]
 			do
-				echo "Someone is still listening to 6653! Wait 5 sec";
+				echo "Someone is still listening to 6633! Wait 5 sec";
 				sleep 5;
-				sudo killall -9 lt-nox_core;
 				listen=`netstat -na | grep 6633 | grep LISTEN`;
 			done
 			echo "-------------------------------------------------------------" >> $stats;
@@ -134,10 +133,6 @@ sed -i -e "s/controller.immediate=.*$/controller.immediate=false/" beacon-1.0.2/
 echo "Fixed 32 switches throughput" >> $log;
 echo "Fixed 32 switches throughput" >> $stats;
 for i in $(seq 0 1 $CONTR_NUM) ; do
-	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh;
-	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $log;
-	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $stats;
-	#macs=100;
 	for MAC in $MACS ; do
 		echo "MACs per switch: $MAC" >> $log;
 		echo "****************** START TEST (hosts = $MACS) ***************************"
