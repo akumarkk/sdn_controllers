@@ -10,12 +10,12 @@ cd tmp;
 ./install.sh
 
 echo "Setting up required bins ...";
-cp ./start.sh ./beacon-1.0.2-linux_x86_64/;
-cp ./benchmark_throughput_macs.sh ./beacon-1.0.2-linux_x86_64/
+cp ./start.sh ./beacon-1.0.2/;
+cp ./benchmark_throughput_macs.sh ./beacon-1.0.2/
 
-cd ./beacon-1.0.2-linux_x86_64
+cd ./beacon-1.0.2
 pwd1=`pwd`
-echo "Entered [$pwd1/floodlight]"
+echo "Entered [$pwd1/beacon-1.0.2]"
 
 ./benchmark_throughput_macs.sh .
 
