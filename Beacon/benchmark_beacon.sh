@@ -11,6 +11,7 @@ cd tmp;
 
 echo "Setting up required bins ...";
 cp ./start.sh ./beacon-1.0.2/;
+cp ./stat.sh ./beacon-1.0.2/;
 cp ./benchmark_throughput_macs.sh ./beacon-1.0.2/
 
 cd ./beacon-1.0.2
