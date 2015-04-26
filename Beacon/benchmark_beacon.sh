@@ -4,7 +4,7 @@ mkdir tmp;
 
 
 echo "Setting up required bins ...";
-cp ./bin/* ./tmp/
+cp ./bins/* ./tmp/
 cd tmp;
 
 ./install.sh
