@@ -67,10 +67,7 @@ set -m
 # Set reuse sockets in TIME_WAIT state
 echo 1 | sudo tee /proc/sys/net/ipv4/tcp_tw_reuse;
 
-CONTR_DIR=(03_FloodLight)
-CONTR_NUM=${#CONTR_DIR[@]}
 
-CONTR_NUM=$((CONTR_NUM-1))
 RUN=$((RUN-1))
 
 ml="07_Mul"
@@ -94,7 +91,6 @@ test_controller()
 			gpid=`ps axu | grep start.sh | egrep -vi grep | awk '{print $2}'`;
 			echo "Sleeping .................."
 			sleep 5;
-			cdir=${CONTR_DIR[$1]};
 			echo $cdir;
 			echo "GPid is $gpid, id is $1";
 			echo "Starting cbench server ...."
@@ -103,14 +99,6 @@ test_controller()
 			
 			# Kill start.sh and all child procs
 			sudo kill -TERM -$gpid;
-			if [ ${CONTR_DIR[$1]} == 04_Trema ]; then
-				sudo killall ovs-openflowd switch switch_manager phost;
-				sudo killall -9 switch;
-			fi;
-			if [ $cdir = $ml -o $cdir = $mlp ];
-			then
-                        	sudo killall lt-mul
-                	fi;
 			listen=`netstat -na | grep 6653 | grep LISTEN`;
 			while [ "$listen" != '' ]
 			do
@@ -131,13 +119,11 @@ test_controller()
 # Throughput with fixed number of switches (32) and different number of MACs per switch
 echo "Fixed 32 switches throughput" >> $log;
 echo "Fixed 32 switches throughput" >> $stats;
-for i in $(seq 0 1 $CONTR_NUM) ; do
 	for MAC in $MACS ; do
 		echo "MACs per switch: $MAC" >> $log;
 		echo "****************** START TEST (hosts = $MACS) ***************************"
 		test_controller $i $MAC $FIX_SWITCH "-t" $THR_NUM;
 	done
-done
 	
 
 # Close stats log
