@@ -39,7 +39,7 @@ cd ./Results/
 echo " "
 echo "__________________ START PLOTTER _______________________"
 
-sudo apt-get install gnuplot-x11
+sudo apt-get install --assume-yes gnuplot-x11
 python plot_results.py
 
 echo "******************* DONE ***********************"
