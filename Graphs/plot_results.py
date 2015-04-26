@@ -84,4 +84,4 @@ if __name__ == "__main__":
     populate_graph_data("beacon.log", "beacon.data")
 
     print "Populating graph ..."
-    os.system('cat ./macs.graph | gnuplot')
+    os.system('cat ./mac.graph | gnuplot')
