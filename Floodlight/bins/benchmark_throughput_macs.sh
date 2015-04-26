@@ -119,6 +119,7 @@ test_controller()
 # Throughput with fixed number of switches (32) and different number of MACs per switch
 echo "Fixed 32 switches throughput" >> $log;
 echo "Fixed 32 switches throughput" >> $stats;
+	i=1
 	for MAC in $MACS ; do
 		echo "MACs per switch: $MAC" >> $log;
 		echo "****************** START TEST (hosts = $MACS) ***************************"

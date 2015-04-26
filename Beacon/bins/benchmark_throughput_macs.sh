@@ -122,6 +122,7 @@ sed -i -e "s/controller.immediate=.*$/controller.immediate=false/" beacon-1.0.2/
 # Throughput with fixed number of switches (32) and different number of MACs per switch
 echo "Fixed 32 switches throughput" >> $log;
 echo "Fixed 32 switches throughput" >> $stats;
+	i=2
 	for MAC in $MACS ; do
 		echo "MACs per switch: $MAC" >> $log;
 		echo "****************** START TEST (hosts = $MACS) ***************************"
