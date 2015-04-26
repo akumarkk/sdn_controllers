@@ -9,7 +9,7 @@ cd tmp;
 
 ./install.sh
 
-cp stats.sh ./floodlight/;
+cp stat.sh ./floodlight/;
 cp start.sh ./floodlight/;
 cp ./benchmark_throughput_macs.sh ./floodlight/
 
