@@ -31,11 +31,16 @@ echo "-------------------------------------------------------------"
 echo "FINISHED"
 
 
+
 echo "Plotting required Results from logs ..."
 cp ./Graphs/* ./Results/
 cd ./Results/
 
-./plot_Results.py
+echo " "
+echo "__________________ START PLOTTER _______________________"
+
+sudo apt-get install gnuplot-x11
+./plot_results.py
 
 echo "******************* DONE ***********************"
 
