@@ -127,17 +127,11 @@ test_controller()
 
 ./stat.sh $stats &
 
-# Set Beacon properties for throughput testing
-sed -i -e "s/controller.immediate=.*$/controller.immediate=false/" beacon-1.0.2/beacon.properties;
 	
 # Throughput with fixed number of switches (32) and different number of MACs per switch
 echo "Fixed 32 switches throughput" >> $log;
 echo "Fixed 32 switches throughput" >> $stats;
 for i in $(seq 0 1 $CONTR_NUM) ; do
-	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh;
-	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $log;
-	#./$HOMEDIR/${CONTR_DIR[i]}/who.sh >> $stats;
-	#macs=100;
 	for MAC in $MACS ; do
 		echo "MACs per switch: $MAC" >> $log;
 		echo "****************** START TEST (hosts = $MACS) ***************************"
