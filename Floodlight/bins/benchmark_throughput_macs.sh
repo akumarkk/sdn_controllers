@@ -104,7 +104,6 @@ test_controller()
 			do
 				echo "Someone is still listening to 6653! Wait 5 sec";
 				sleep 5;
-				sudo killall -9 lt-nox_core;
 				listen=`netstat -na | grep 6633 | grep LISTEN`;
 			done
 			echo "-------------------------------------------------------------" >> $stats;
