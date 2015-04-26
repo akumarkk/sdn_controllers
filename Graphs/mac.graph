@@ -1,5 +1,5 @@
 #set xrange [0:]
-set terminal png
+set terminal png linewidth 3
 #set output '| display png:-'
 
 set output "macs.png"
@@ -7,6 +7,8 @@ set ylabel "Flows/sec"
 set xlabel  "MACS per Switch"
 set grid
 
+set format x "%.0f"
+set format y "%.0f"
 set style line 1 lt 1 lw 3 pt 1
 set style line 2 lt 2 lw 3 pt 2
 
@@ -15,5 +17,5 @@ set style line 2 lt 2 lw 3 pt 2
 set key outside right center
 
 set xtics("1000" 0, "10000" 1, "100000" 2, "1000000" 3, "10000000" 4)
-plot "data.txt" using :2 title "foo" with linespoints, "data.txt" using :3 title "too" with linespoints
+plot "floodlight.data" using :2 title "Floodlight" with linespoints, "beacon.data" using :2 title "Beacon" with linespoints
 
